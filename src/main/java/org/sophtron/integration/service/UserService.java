@@ -35,4 +35,5 @@ public class UserService extends ApiService {
         return postHeaderSpec(Endpoints.USER_INSTITUTION_ACCOUNT_TRANSACTION_BY_DATE,data.getRequest()).retrieve().bodyToFlux(Map.class);
     }
 
+
 }

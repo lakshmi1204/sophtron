@@ -10,10 +10,13 @@
     </parent>
     <groupId>org.sophtron.integration</groupId>
     <artifactId>sophtron</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <name>sophtron-ui</name>
+
    <properties>
         <java.version>1.8</java.version>
+           <docker.image.prefix>prefix</docker.image.prefix>
+           <docker.image.name>sophtron-api</docker.image.name>
     </properties>
     <dependencies>
         <dependency>
@@ -58,6 +61,7 @@
     </dependencies>
 
     <build>
+        <finalName>sophtron-api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -70,6 +74,38 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.33.0</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <images>
+                        <image>
+                            <name>${docker.image.prefix}/${docker.image.name}</name>
+                            <build>
+                                <dockerFileDir>${project.basedir}</dockerFileDir>
+                                <assembly>
+                                    <descriptorRef>artifact</descriptorRef>
+                                </assembly>
+                                <tags>
+                                    <tag>1.0.1</tag>
+                                </tags>
+                            </build>
+                        </image>
+                    </images>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
