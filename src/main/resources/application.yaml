@@ -1,0 +1,15 @@
+sophtron:
+  api:
+   endpoint: https://api.sophtron.com/api/
+   auth:
+     direct:
+       headerPrefix: FIApiAUTH
+       userId: 35ed15c6-0007-4a85-bc9d-67584e4d0daf
+       accessKey: ODhlOTZkOGItNmJjNy00YjY3LWFhMmUtYTJhYTFjNjc1OGEw
+       #userId: 047ed079-4654-4505-a795-1e2ef1fe91d8
+       #accessKey: NWE0MGIxNzQtZjRmMS00YmRmLTg1ODMtMDdmYTE4MDdlZWM5
+logging:
+  level:
+    ROOT: debug
+
+
