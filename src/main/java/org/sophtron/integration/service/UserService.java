@@ -3,7 +3,9 @@ package org.sophtron.integration.service;
 import lombok.extern.slf4j.Slf4j;
 import org.sophtron.integration.model.ApiDetails;
 import org.sophtron.integration.model.ApiRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 
 import java.util.Map;
@@ -16,8 +18,27 @@ public class UserService extends ApiService {
         super(details);
     }
 
+    /**
+     * Returns JobId and UserInstitution
+     * @param request
+     * @return
+     */
+    public Flux<Map> createUserInstitution(ApiRequest request) {
+        WebClient.RequestHeadersSpec<?> headersSpec = postHeaderSpec(Endpoints.CREATE_USER_INSTITUTION,request.getRequest());
+        //Transforming the data here if needed before sending the response.
 
-    public void createUserInstitution() {
+        return headersSpec.exchangeToFlux(v->
+        {
+            if(v.statusCode()== HttpStatus.OK)
+            {
+            return v.bodyToFlux(Map.class);
+            }
+            else {
+                log.debug("Status code is not 200 , instead it is  {}", v.statusCode());
+                return Flux.error(new RuntimeException("error"));
+            }
+        });
+
 
     }
 
@@ -34,6 +55,9 @@ public class UserService extends ApiService {
     public Flux<Map> getAccountTransactionByDate(ApiRequest data){
         return postHeaderSpec(Endpoints.USER_INSTITUTION_ACCOUNT_TRANSACTION_BY_DATE,data.getRequest()).retrieve().bodyToFlux(Map.class);
     }
+
+
+
 
 
 }

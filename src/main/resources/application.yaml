@@ -4,10 +4,10 @@ sophtron:
    auth:
      direct:
        headerPrefix: FIApiAUTH
-       userId:
-       accessKey:
+       userId: 35ed15c6-0007-4a85-bc9d-67584e4d0daf
+       accessKey: ODhlOTZkOGItNmJjNy00YjY3LWFhMmUtYTJhYTFjNjc1OGEw
 logging:
   level:
-    ROOT: info
+    ROOT: debug
 
 

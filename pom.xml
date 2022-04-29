@@ -43,6 +43,7 @@
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-spring-webflux</artifactId>
@@ -61,7 +62,7 @@
     </dependencies>
 
     <build>
-        <finalName>sophtron-api</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
