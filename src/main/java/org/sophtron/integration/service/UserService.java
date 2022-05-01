@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.Map;
 
@@ -54,6 +55,10 @@ public class UserService extends ApiService {
 
     public Flux<Map> getAccountTransactionByDate(ApiRequest data){
         return postHeaderSpec(Endpoints.USER_INSTITUTION_ACCOUNT_TRANSACTION_BY_DATE,data.getRequest()).retrieve().bodyToFlux(Map.class);
+    }
+
+    public Mono<String> deleteUserInstitution(ApiRequest request){
+        return postHeaderSpec(Endpoints.DELETE_USER_INSTITUTION,request.getRequest()).retrieve().bodyToMono(String.class);
     }
 
 

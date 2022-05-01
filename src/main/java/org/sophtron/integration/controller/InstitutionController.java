@@ -12,7 +12,7 @@ import reactor.core.publisher.Flux;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/sophtron/institutions")
+@RequestMapping("/sophtron/api/institutions")
 public class InstitutionController {
 
     private InstitutionService service;
@@ -21,10 +21,11 @@ public class InstitutionController {
         service = pService;
     }
 
+    // TODO Implement search feature and return. Does not make sense to load everything in the UI.
+
     @PostMapping(value="/",consumes = MediaType.APPLICATION_JSON_VALUE
             ,produces = MediaType.APPLICATION_JSON_VALUE)
     public Flux<Map> getInstitutions(@RequestBody ApiRequest request){
-         return service.getInstitutions(request);
-
+        return  service.getInstitutions(request);
     }
 }

@@ -11,5 +11,6 @@ public final class Endpoints {
     public static final String JOB_UPDATE_SECURITY_ANSWER = "Job/UpdateJobSecurityAnswer";
     public static final String JOB_UPDATE_JOB_TOKEN_INPUT = "Job/UpdateJobTokenInput";
     public static final String JOB_UPDATE_JOB_CAPTCHA_INPUT = "Job/UpdateJobCaptchaInput";
+    public static final String DELETE_USER_INSTITUTION= "UserInstitution/DeleteUserInstitution";
 
 }

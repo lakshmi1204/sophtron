@@ -12,7 +12,7 @@ import reactor.core.publisher.Flux;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/sophtron/job")
+@RequestMapping("/sophtron/api/job/")
 public class JobController {
 
     private JobService service;

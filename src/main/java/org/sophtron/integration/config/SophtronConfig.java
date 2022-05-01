@@ -5,10 +5,23 @@ import org.sophtron.integration.model.ApiSettings;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class SophtronConfig {
 
+    /**
+     * Swagger configuration.
+     * @return
+     */
+    @Bean
+    public Docket allocateSwaggerSetting(){
+        return new Docket(DocumentationType.SWAGGER_2).select().
+                apis(RequestHandlerSelectors.basePackage("org.sophtron.integration.controller")).paths(PathSelectors.any()).build();
+    }
 
     @Bean
     public ApiSettings allocateApiDirectSettings(@Value("${sophtron.api.auth.direct.userId}") final String userId,
